@@ -48,8 +48,6 @@ services:
       PROXY_ADDRESS_FORWARDING: "true" # <==== very important if you use reverse proxy
     image: jboss/keycloak:${KEYCLOAK_VERSION}
     restart: unless-stopped
-    networks:
-      - nginx-proxy
 
 volumes:
   postgres_data:
