@@ -55,5 +55,6 @@ volumes:
 
 # Use this configuration in production with nginx-proxy container
 networks:
-  nginx-proxy:
-    external: true
+  default:
+    external:
+      name: nginx-proxy
