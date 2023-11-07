@@ -48,6 +48,8 @@ services:
       PROXY_ADDRESS_FORWARDING: "true" # <==== very important if you use reverse proxy
     image: jboss/keycloak:${KEYCLOAK_VERSION}
     restart: unless-stopped
+    networks:
+      - nginx-proxy
 
 volumes:
   postgres_data:
@@ -55,6 +57,5 @@ volumes:
 
 # Use this configuration in production with nginx-proxy container
 networks:
-  default:
-    external:
-      name: nginx-proxy
+  nginx-proxy:
+    external: true
