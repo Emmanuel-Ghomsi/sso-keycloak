@@ -27,8 +27,8 @@ services:
     restart: always
     ports:
       - ${PORT_KEYCLOAK}:8080
-    volumes:
-      - /etc/nginx/conf.d
+    expose:
+      - ${PORT_KEYCLOAK}
     networks:
       - nginx-proxy
 
