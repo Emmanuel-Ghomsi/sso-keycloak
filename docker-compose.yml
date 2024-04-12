@@ -30,6 +30,16 @@ services:
     networks:
       - nginx-proxy
 
+  nginx-configurator:
+    build:
+      context: ./nginx-configurator
+    volumes:
+      - /etc/nginx/conf.d
+    networks:
+      - nginx-proxy
+    depends_on:
+      - nginx-proxy
+
 networks:
   nginx-proxy:
     external: true
