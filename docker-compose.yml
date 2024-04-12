@@ -37,8 +37,6 @@ services:
       - /etc/nginx/conf.d
     networks:
       - nginx-proxy
-    depends_on:
-      - nginx-proxy
 
 networks:
   nginx-proxy:
