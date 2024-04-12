@@ -33,8 +33,12 @@ services:
   nginx-configurator:
     build:
       context: ./nginx-configurator
+    ports:
+      - ${PORT_KEYCLOAK}:80
     volumes:
       - /etc/nginx/conf.d
+    depends_on:
+      - keycloak
     networks:
       - nginx-proxy
 
