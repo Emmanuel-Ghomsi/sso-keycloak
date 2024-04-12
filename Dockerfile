@@ -13,7 +13,7 @@ ENV KC_DB=postgres
 WORKDIR /opt/keycloak
 
 # for demonstration purposes only, please make sure to use proper certificates in production instead
-RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
+# RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysize 2048 -dname "CN=server" -alias server -ext "SAN:c=DNS:localhost,IP:127.0.0.1" -keystore conf/server.keystore
 
 RUN /opt/keycloak/bin/kc.sh build
 
@@ -32,27 +32,27 @@ ENV KC_DB_USERNAME=root
 
 ENV KC_DB_PASSWORD=hkdigitals
 
-ENV KC_HOSTNAME=https://sso.surrency.co/
+ENV KC_HOSTNAME=localhost
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
 # Stage 3
-FROM nginx:1.22.0-alpine
+#FROM nginx:1.22.0-alpine
 
-COPY --from=builder /opt/keycloak/ /usr/share/nginx/html/
+#COPY --from=builder /opt/keycloak/ /usr/share/nginx/html/
 
-COPY --from=builder /opt/keycloak/ /var/www
+#COPY --from=builder /opt/keycloak/ /var/www
 
 # Supprimez le fichier de configuration par défaut de Nginx
-RUN rm /etc/nginx/conf.d/default.conf
+#RUN rm /etc/nginx/conf.d/default.conf
 
 # Copiez votre fichier de configuration personnalisé dans le conteneur
-COPY nginx.conf /etc/nginx/conf.d/nginx.conf
+#COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
-COPY nginx.conf /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
 
-ENV PORT_KEYCLOAK=4001
+#ENV PORT_KEYCLOAK=4001
 
-EXPOSE ${PORT_KEYCLOAK}
+#EXPOSE ${PORT_KEYCLOAK}
 
-CMD nginx -g 'daemon off;'
+#CMD nginx -g 'daemon off;'
