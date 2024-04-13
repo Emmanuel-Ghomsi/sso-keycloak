@@ -25,6 +25,8 @@ services:
       HTTPS_METHOD: redirect
       PROXY_ADDRESS_FORWARDING: "true"
     restart: always
+    ports:
+      - ${PORT_KEYCLOAK}:${PORT_KEYCLOAK}
     expose:
       - ${PORT_KEYCLOAK}
     networks:
