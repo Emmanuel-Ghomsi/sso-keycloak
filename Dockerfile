@@ -22,7 +22,7 @@ FROM quay.io/keycloak/keycloak:latest
 # ENV KC_DB_PASSWORD=<DBPASSWORD>
 # ENV KC_HOSTNAME=localhost
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--proxy=edge" , "--auto-build", "--db=postgres"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--proxy=edge", "--db=postgres"]
 
 # FROM nginx:latest
 
