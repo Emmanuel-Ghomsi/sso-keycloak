@@ -5,21 +5,23 @@ services:
     build:
       context: .
     container_name: keycloak
-    command:
-      - start
     environment:
+# Hostname Configuration
       KC_HOSTNAME: ${KC_HOSTNAME}
       KC_HOSTNAME_PORT: ${KC_HOSTNAME_PORT}
       KC_HOSTNAME_STRICT_BACKCHANNEL: false
       KC_HTTP_ENABLED: true
       KC_HOSTNAME_STRICT_HTTPS: false
       KC_HEALTH_ENABLED: true
+# Database Configuration
       KC_DB: ${KC_DB}
       KC_DB_URL: ${KC_DB_URL}
       KC_DB_USERNAME: ${KC_DB_USERNAME}
       KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+# Admin Credentials
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+# Reverse proxy Configuration
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
