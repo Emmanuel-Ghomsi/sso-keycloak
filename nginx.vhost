@@ -1,0 +1,16 @@
+server {
+    server_name sso.surrency.co www.sso.surrency.co
+
+    listen 4001;
+
+    access_log /var/log/nginx/keycloak_access.log;
+    error_log /var/log/nginx/keycloak_error.log;
+
+    location / {
+        proxy_pass http://keycloak;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}

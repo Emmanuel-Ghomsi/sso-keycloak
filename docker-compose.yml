@@ -28,6 +28,8 @@ services:
       VIRTUAL_PORT: ${PORT_KEYCLOAK}
       HTTPS_METHOD: redirect
       PROXY_ADDRESS_FORWARDING: "true"
+    volumes:
+      - ./nginx.vhost:/etc/nginx/conf.d/nginx.vhost:ro
     restart: always
     ports:
       - ${PORT_KEYCLOAK}:8080
