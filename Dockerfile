@@ -24,16 +24,16 @@ ENV KC_HOSTNAME=localhost
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
-FROM nginx:latest
+# FROM nginx:latest
 
 # Copiez les éléments nécessaires de l'image Keycloak dans le répertoire approprié de Nginx
-COPY --from=final /opt/keycloak/themes /usr/share/nginx/html/themes
+# COPY --from=final /opt/keycloak/themes /usr/share/nginx/html/themes
 
 # Copiez votre fichier de configuration nginx.conf dans le répertoire approprié de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-ENV PORT_KEYCLOAK=4001
+# ENV PORT_KEYCLOAK=4001
 
-EXPOSE ${PORT_KEYCLOAK}
+# EXPOSE ${PORT_KEYCLOAK}
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
