@@ -28,6 +28,7 @@ services:
       - ${PORT_KEYCLOAK}:8080
     networks:
       - nginx-proxy
+
   nginx:
     image: nginx:latest
     container_name: keycloak-nginx
