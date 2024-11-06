@@ -23,13 +23,10 @@ services:
       # Admin Credentials
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      # Theme Configuration
-      KC_SPI_THEME_DEFAULT: ${KEYCLOAK_THEME}
     restart: always
     ports:
       - ${PORT_KEYCLOAK}:8080
     volumes:
-      - ./extensions:/opt/keycloak/providers/
       - ./themes/${KEYCLOAK_THEME}:/opt/keycloak/themes/${KEYCLOAK_THEME}
     networks:
       - nginx-proxy
