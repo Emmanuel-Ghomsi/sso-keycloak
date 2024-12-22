@@ -1,7 +1,7 @@
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
-    command: start
+    command: start --proxy=edge
     container_name: keycloak
     environment:
       # Hostname Configuration
@@ -17,12 +17,6 @@ services:
       # Admin Credentials
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-    healthcheck:
-      test:
-        ["CMD", "curl", "-f", "https://sso.cassavamarketplace.com/health/ready"]
-      interval: 15s
-      timeout: 2s
-      retries: 15
     restart: always
     ports:
       - ${PORT_KEYCLOAK}:8080
