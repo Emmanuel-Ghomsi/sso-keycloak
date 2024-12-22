@@ -1,7 +1,7 @@
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
-    command: start --proxy=edge
+    command: start
     container_name: keycloak
     environment:
       # Hostname Configuration
@@ -9,6 +9,7 @@ services:
       KC_HTTP_ENABLED: true
       KC_HEALTH_ENABLED: true
       KC_LOG_LEVEL: debug
+      KC_PROXY: edge
       # Database Configuration
       KC_DB: ${KC_DB}
       KC_DB_URL: ${KC_DB_URL}
