@@ -1,15 +1,14 @@
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:latest
-    command: start
+    command: start --http-enabled=true --hostname=${KC_HOSTNAME} --db=${KC_DB} --db-url=${KC_DB_URL} --db-username=${KC_DB_USERNAME} --db-password=${KC_DB_PASSWORD} --log-level=INFO --health-enabled=true --proxy-headers=xforwarded
     container_name: keycloak
     environment:
       # Hostname Configuration
       KC_HOSTNAME: ${KC_HOSTNAME}
       KC_HTTP_ENABLED: true
       KC_HEALTH_ENABLED: true
-      KC_LOG_LEVEL: debug
-      KC_PROXY: edge
+      KC_LOG_LEVEL: info
       # Database Configuration
       KC_DB: ${KC_DB}
       KC_DB_URL: ${KC_DB_URL}
