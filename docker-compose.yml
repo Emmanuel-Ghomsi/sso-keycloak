@@ -23,8 +23,8 @@ services:
     # volumes:
       # - ./themes/${KEYCLOAK_THEME}:/opt/keycloak/themes/${KEYCLOAK_THEME}
     networks:
-      - cassava-network
+      - keycloak-network
 
 networks:
-  cassava-network:
+  keycloak-network:
     driver: bridge
